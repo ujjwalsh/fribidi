@@ -23,6 +23,32 @@ matrix:
         - ninja -C build
         - ninja -C build test
       cache: pip
+    - os: linux
+      compiler: gcc
+      arch:
+        - ppc64le
+      install: bash .ci/build-c2man.sh
+      env: PATH=$PATH:$TRAVIS_BUILD_DIR/c2man-install
+    - os: linux
+      compiler: clang
+      arch:
+        - ppc64le
+    - os: linux
+      language: python
+      python: 3.5
+      arch:
+        - ppc64le
+      env: PATH=$PATH:$TRAVIS_BUILD_DIR/c2man-install
+      install:
+        - pip install meson ninja
+      before_script:
+        - bash .ci/build-c2man.sh
+      script:
+        - meson build
+        - ninja -C build
+        - ninja -C build test
+      cache: pip
+
 
 before_script:
   - ./autogen.sh
