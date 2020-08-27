@@ -42,6 +42,7 @@ matrix:
       install:
         - pip install meson ninja
       before_script:
+        - sudo apt-get update cmake
         - bash .ci/build-c2man.sh
       script:
         - meson build
