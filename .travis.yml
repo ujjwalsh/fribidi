@@ -5,15 +5,23 @@ matrix:
     - os: linux
       compiler: gcc
       install: bash .ci/build-c2man.sh
+      arch:
+        - ppc64le
       env: PATH=$PATH:$TRAVIS_BUILD_DIR/c2man-install
     - os: linux
       compiler: clang
+      arch:
+        - ppc64le
     - os: osx
       compiler: clang
+      arch:
+        - ppc64le
     - os: linux
       language: python
       python: 3.5
       env: PATH=$PATH:$TRAVIS_BUILD_DIR/c2man-install
+      arch:
+        - ppc64le
       install:
         - pip install meson ninja
       before_script:
